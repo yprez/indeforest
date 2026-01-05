@@ -1,29 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indeforest</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Indeforest - Forest Music Events</title>
+    <meta name="description" content="Indeforest brings forest-inspired music events with psychedelic and electronic artists.">
+    <meta name="theme-color" content="#000000">
+    <meta property="og:title" content="Indeforest">
+    <meta property="og:description" content="Forest-inspired music events">
+    <meta property="og:image" content="https://indeforest.com/images/logo.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            height: 100%;
+        :root {
+            color-scheme: dark;
+
+            --color-bg: #000;
+            --color-text: #c5d4c0;
+            --color-text-muted: #4a6a4a;
+            --color-accent: #7cb87c;
+            --color-surface: #0d1f0d;
+            --color-surface-alt: #1a2f1a;
+            --color-border: #2a4a2a;
+            --color-border-dashed: #3a5a3a;
+
+            --font-family: 'Cinzel', serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --radius: 8px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        * {
             margin: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: var(--color-bg);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: var(--radius);
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        header {
+            text-align: center;
+            padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-md);
+        }
+
+        .logo {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm) var(--spacing-xl);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-accent);
+            text-align: center;
+        }
+
+        section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .event-card {
+            aspect-ratio: 2/3;
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(124, 184, 124, 0.2);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-card img.align-left {
+            object-position: left center;
+        }
+
+        .event-card.placeholder {
+            background: linear-gradient(135deg, var(--color-surface-alt) 0%, var(--color-surface) 100%);
+            border: 1px dashed var(--color-border-dashed);
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #000;
-            overflow: hidden; /* Prevent scrolling if image is too large */
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
         }
 
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
+        .future-events {
+            text-align: center;
+            padding: var(--spacing-lg) var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-surface-alt) 0%, var(--color-surface) 100%);
+            border-radius: var(--radius);
+            border: 1px solid var(--color-border);
+        }
+
+        .future-events p {
+            font-size: 0.95rem;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            opacity: 0.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: var(--spacing-md);
+            color: var(--color-text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: var(--spacing-md) var(--spacing-sm) 1.5rem;
+            }
+
+            .logo {
+                max-width: 200px;
+            }
+
+            h2 {
+                font-size: 1rem;
+                letter-spacing: 0.2em;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body>
-    <img src="images/poster.jpg" alt="Indeforest">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header>
+        <h1 class="sr-only">Indeforest - Forest Music Events</h1>
+        <img src="images/logo.png" alt="Indeforest" class="logo">
+    </header>
+
+    <main id="main">
+        <section aria-labelledby="past-events-heading">
+            <h2 id="past-events-heading">Past Events</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <img src="images/poster4.jpeg" alt="Indeforest 4 event poster - December 5, 2024">
+                </div>
+                <div class="event-card">
+                    <img src="images/poster3.jpeg" alt="Indeforest 3 event poster" class="align-left">
+                </div>
+                <div class="event-card">
+                    <img src="images/poster2.jpeg" alt="Indeforest 2 event poster">
+                </div>
+                <div class="event-card">
+                    <img src="images/poster1.jpeg" alt="Indeforest 1 event poster">
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="future-events-heading">
+            <h2 id="future-events-heading">Future Events</h2>
+            <div class="future-events">
+                <p>Coming soon...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Indeforest</p>
+    </footer>
 </body>
 </html>
