@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Indeforest</title>
-    <meta name="description" content="Indeforest">
+    <meta name="description" content="Indeforest - forest-inspired music events and community, Jerusalem">
     <meta name="theme-color" content="#000000">
     <meta property="og:title" content="Indeforest">
-    <meta property="og:description" content="Indeforest">
+    <meta property="og:description" content="Forest-inspired music events and community, Jerusalem">
     <meta property="og:image" content="https://indeforest.com/images/logo.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://indeforest.com">
@@ -16,254 +16,164 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            color-scheme: dark;
-
-            --color-bg: #000;
-            --color-text: #d5e4d0;
-            --color-text-muted: #4a6a4a;
-            --color-accent: #7cb87c;
-            --color-surface: #0d1f0d;
-            --color-surface-alt: #1a2f1a;
-            --color-border: #2a4a2a;
-            --color-border-dashed: #3a5a3a;
-
-            --font-family: 'Cinzel', serif;
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 0.75rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --radius: 8px;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        * {
-            margin: 0;
-        }
-
-        body {
-            font-family: var(--font-family);
-            background: var(--color-bg);
-            color: var(--color-text);
-            min-height: 100vh;
-            line-height: 1.5;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-accent);
-            color: var(--color-bg);
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: var(--radius);
-            z-index: 100;
-        }
-
-        .skip-link:focus {
-            top: 1rem;
-        }
-
-        :focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-
-        header {
-            text-align: center;
-            padding: 0;
-        }
-
-        .logo {
-            max-width: 280px;
-            width: 100%;
-            height: auto;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-sm) var(--spacing-md);
-        }
-
-        h2 {
-            font-size: 1.4rem;
-            font-weight: 400;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            padding: var(--spacing-sm) 0;
-            margin: 0;
-            color: var(--color-accent);
-            text-align: center;
-        }
-
-        section {
-            margin-bottom: var(--spacing-md);
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .event-card {
-            aspect-ratio: 2/3;
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .event-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(124, 184, 124, 0.2);
-        }
-
-        .event-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .event-card img.align-left {
-            object-position: left center;
-        }
-
-        .event-card.placeholder {
-            background: linear-gradient(135deg, var(--color-surface-alt) 0%, var(--color-surface) 100%);
-            border: 1px dashed var(--color-border-dashed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-muted);
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-        }
-
-        .future-events {
-            text-align: center;
-            padding: var(--spacing-lg) var(--spacing-md);
-            background: linear-gradient(135deg, var(--color-surface-alt) 0%, var(--color-surface) 100%);
-            border-radius: var(--radius);
-            border: 1px solid var(--color-border);
-        }
-
-        .future-events p {
-            font-size: 0.95rem;
-            letter-spacing: 0.2em;
-            color: var(--color-accent);
-            opacity: 0.8;
-        }
-
-        footer {
-            text-align: center;
-            padding: var(--spacing-md);
-            color: var(--color-text-muted);
-            font-size: 1rem;
-            letter-spacing: 0.1em;
-        }
-
-        .social-link {
-            color: var(--color-text-muted);
-            display: inline-block;
-            margin-top: var(--spacing-xs);
-        }
-
-        .social-link:hover {
-            color: var(--color-text);
-        }
-
-        @media (max-width: 600px) {
-            header {
-                padding: var(--spacing-md) var(--spacing-sm) 1.5rem;
-            }
-
-            .logo {
-                max-width: 200px;
-            }
-
-            h2 {
-                font-size: 1rem;
-                letter-spacing: 0.2em;
-            }
-
-            .events-grid {
-                grid-template-columns: 1fr;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
     <header>
         <h1 class="sr-only">Indeforest</h1>
-        <img src="images/logo.png" alt="Indeforest" class="logo">
+        <a href="#music" data-nav="music">
+            <img src="images/logo.png" alt="Indeforest" class="logo">
+        </a>
+        <nav aria-label="Main">
+            <a href="#music" data-nav="music" aria-current="page">Music</a>
+            <a href="#events" data-nav="events">Events</a>
+            <a href="#shop" data-nav="shop">Shop</a>
+        </nav>
     </header>
 
     <main id="main">
-        <section aria-labelledby="past-events-heading">
-            <h2 id="past-events-heading">Past Events</h2>
-            <div class="events-grid">
-                <div class="event-card">
-                    <img src="images/poster4.jpeg" alt="Indeforest 4 event poster - December 5, 2024">
-                </div>
-                <div class="event-card">
-                    <img src="images/poster3.jpeg" alt="Indeforest 3 event poster" class="align-left">
-                </div>
-                <div class="event-card">
-                    <img src="images/poster2.jpeg" alt="Indeforest 2 event poster">
-                </div>
-                <div class="event-card">
-                    <img src="images/poster1.jpeg" alt="Indeforest 1 event poster">
-                </div>
-            </div>
-        </section>
 
-        <section aria-labelledby="future-events-heading">
-            <h2 id="future-events-heading">Future Events</h2>
-            <div class="future-events">
-                <p>Coming soon...</p>
-            </div>
-        </section>
+        <!-- Music view -->
+        <div class="view" id="music">
+            <section aria-labelledby="music-heading">
+                <h2 id="music-heading">Music</h2>
+
+                <div class="music-section">
+                    <h3 class="music-artist">Sphirala</h3>
+                    <ol class="tracklist">
+                        <li data-track-id="3529662332">
+                            <span class="tracklist-name">Center Of Consciousness</span>
+                            <span class="tracklist-album">Suomispace Ba Mid Bar</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="music-section">
+                    <h3 class="music-artist">
+                        <a href="https://hiplessmusic.bandcamp.com" target="_blank" rel="noopener noreferrer">Hipless</a>
+                    </h3>
+
+                    <h4 class="music-album">Space Monkey</h4>
+                    <ol class="tracklist">
+                        <li data-track-id="3082202725"><span class="tracklist-name">Space Monkey</span></li>
+                        <li data-track-id="2844321015"><span class="tracklist-name">Acid Blues (feat. Sphirala)</span></li>
+                        <li data-track-id="4232498355"><span class="tracklist-name">Duck Bass</span></li>
+                        <li data-track-id="3954690445"><span class="tracklist-name">htbt 4</span></li>
+                        <li data-track-id="584806052"><span class="tracklist-name">Space Monkey (Omo Santana Takes A Flight With Jimi)</span></li>
+                        <li data-track-id="4176947237"><span class="tracklist-name">Space Monkey (Weltklang Lockdown Mix)</span></li>
+                        <li data-track-id="629201618"><span class="tracklist-name">Acid Blues (Omo Santana's Abbey Road Crossing)</span></li>
+                    </ol>
+
+                    <h4 class="music-album">Sisyfeet Remixes</h4>
+                    <ol class="tracklist">
+                        <li data-track-id="2575806238"><span class="tracklist-name">Sisyfeet (Omo Santana's Birds And Bees Remix)</span></li>
+                        <li data-track-id="2265996597"><span class="tracklist-name">Sisyfeet (Sophisticated Fantasies Remix)</span></li>
+                        <li data-track-id="2540874659"><span class="tracklist-name">htbt (Omo Santana's Mysterious Flying Saucer Mix)</span></li>
+                    </ol>
+
+                    <h4 class="music-album">Sisyfeet EP</h4>
+                    <ol class="tracklist">
+                        <li data-track-id="1766946223"><span class="tracklist-name">Sisyfeet</span></li>
+                        <li data-track-id="1196291231"><span class="tracklist-name">Schmeckt Gut</span></li>
+                        <li data-track-id="806798327"><span class="tracklist-name">Htbt</span></li>
+                    </ol>
+                </div>
+            </section>
+        </div>
+
+        <!-- Events view -->
+        <div class="view" id="events" hidden>
+            <section aria-labelledby="past-events-heading">
+                <h2 id="past-events-heading">Past Events</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <img src="images/poster4.jpeg" alt="Indeforest 4 event poster - December 5, 2024">
+                    </div>
+                    <div class="event-card">
+                        <img src="images/poster3.jpeg" alt="Indeforest 3 event poster" class="align-left">
+                    </div>
+                    <div class="event-card">
+                        <img src="images/poster2.jpeg" alt="Indeforest 2 event poster">
+                    </div>
+                    <div class="event-card">
+                        <img src="images/poster1.jpeg" alt="Indeforest 1 event poster">
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="future-events-heading">
+                <h2 id="future-events-heading">Future Events</h2>
+                <div class="future-events">
+                    <p>Coming soon...</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Shop view -->
+        <div class="view" id="shop" hidden>
+            <section aria-labelledby="shop-heading">
+                <h2 id="shop-heading">Shop</h2>
+                <p class="shop-intro">
+                    Everything here is up for trade. Tell us what you've got.
+                </p>
+                <div class="shop-grid">
+
+                    <div class="shop-item">
+                        <div class="shop-item-image">
+                            Item photo
+                        </div>
+                        <div class="shop-item-body">
+                            <h3>Item Name</h3>
+                            <p>Short description of what this is.</p>
+                            <a href="https://wa.me/?text=Hey%2C%20I%27m%20interested%20in%20bartering%20for%20%5BItem%20Name%5D%20from%20Indeforest" class="barter-btn">Barter</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-item">
+                        <div class="shop-item-image">
+                            Item photo
+                        </div>
+                        <div class="shop-item-body">
+                            <h3>Item Name</h3>
+                            <p>Short description of what this is.</p>
+                            <a href="https://wa.me/?text=Hey%2C%20I%27m%20interested%20in%20bartering%20for%20%5BItem%20Name%5D%20from%20Indeforest" class="barter-btn">Barter</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-item">
+                        <div class="shop-item-image">
+                            Item photo
+                        </div>
+                        <div class="shop-item-body">
+                            <h3>Item Name</h3>
+                            <p>Short description of what this is.</p>
+                            <a href="https://wa.me/?text=Hey%2C%20I%27m%20interested%20in%20bartering%20for%20%5BItem%20Name%5D%20from%20Indeforest" class="barter-btn">Barter</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
     </main>
 
     <footer>
         <p>Indeforest</p>
         <a href="https://www.facebook.com/indeforestproductions" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
     </footer>
+
+    <div class="site-player" aria-label="Music player">
+        <button type="button" class="player-btn" data-action="player-prev" aria-label="Previous track" disabled>&laquo;</button>
+        <div class="eq-bars" aria-hidden="true"></div>
+        <iframe id="player-iframe" title="Bandcamp player"></iframe>
+        <a class="player-track-name" href="#" aria-live="polite" aria-label="Now playing" target="_blank" rel="noopener noreferrer"></a>
+        <div class="eq-bars" aria-hidden="true"></div>
+        <button type="button" class="player-btn" data-action="player-next" aria-label="Next track">&raquo;</button>
+    </div>
+
+    <script src="js/music.js"></script>
+    <script src="js/nav.js"></script>
 </body>
 </html>
