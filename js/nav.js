@@ -31,7 +31,7 @@
   });
 
   window.addEventListener('popstate', function () {
-    var id = location.hash.slice(1) || 'music';
+    var id = location.hash.slice(1) || 'events';
     showView(id);
   });
 
