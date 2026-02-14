@@ -1,11 +1,11 @@
 (() => {
   'use strict';
 
-  var leaves = ['\u{1F343}', '\u{1F342}', '\u{1F341}', '\u{2618}'];
-  var flowers = ['\u{1F33A}', '\u{1F33B}', '\u{1F337}', '\u{1F338}'];
+  var leaves = ['\u{1F343}', '\u{1F342}', '\u{1F341}', '\u{2618}', '\u{1F33F}', '\u{1F340}', '\u{1FAB6}'];
+  var flowers = ['\u{1F33A}', '\u{1F33B}', '\u{1F337}', '\u{1F338}', '\u{1F33C}', '\u{1FAB7}', '\u{1FAB9}', '\u{1F4AE}'];
   var flowerChance = 0.15;
-  var maxParticles = 20;
-  var spawnInterval = 2000;
+  var maxParticles = 10;
+  var spawnInterval = 3500;
 
   var container = document.createElement('div');
   container.className = 'leaves-container';
@@ -30,7 +30,7 @@
     var startX = randomBetween(5, 95);
     var drift = randomBetween(-30, 30);
     var duration = randomBetween(8, 15);
-    var size = randomBetween(0.8, 1.6);
+    var size = randomBetween(1.4, 2.6);
     var delay = randomBetween(0, 1);
     var spinDir = Math.random() > 0.5 ? 1 : -1;
 
