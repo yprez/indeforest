@@ -187,8 +187,26 @@
   const history = [];
   let pos = -1;
 
-  function randomPick() {
-    return allTracks[Math.floor(Math.random() * allTracks.length)];
+  let shuffled = [];
+  let shufflePos = 0;
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i];
+      a[i] = a[j];
+      a[j] = tmp;
+    }
+    return a;
+  }
+
+  function nextFromShuffle() {
+    if (shufflePos >= shuffled.length) {
+      shuffled = shuffle(allTracks);
+      shufflePos = 0;
+    }
+    return shuffled[shufflePos++];
   }
 
   function loadTrack(entry) {
@@ -213,7 +231,7 @@
     if (pos < history.length - 1) {
       pos++;
     } else {
-      history.push(randomPick());
+      history.push(nextFromShuffle());
       pos = history.length - 1;
     }
     loadTrack(history[pos]);
