@@ -121,6 +121,49 @@
         'Zaps',
       ],
     },
+    {
+      id: 3570212573,
+      artist: 'Sphirala',
+      name: 'Water Ways',
+      album: 'Goa Meditation vol. 2',
+      url: 'https://timewarprecords.bandcamp.com/album/goa-meditation-vol-2-compiled-by-sky-technology-timewarp082-timewarp',
+      tracks: [887951993],
+      trackNames: ['Water Ways'],
+    },
+    {
+      id: null,
+      artist: 'Consept Lightwork',
+      name: '3rd Dimension Capabilities',
+      url: 'https://conseptlightwork.bandcamp.com/track/3rd-dimension-capabilities',
+      tracks: [563147147],
+      trackNames: ['3rd Dimension Capabilities'],
+    },
+    {
+      id: 2588559555,
+      artist: 'Consept Lightwork',
+      name: 'Moments Of Magic',
+      url: 'https://timewarprecords.bandcamp.com/album/consept-lightwork-moments-of-magic-timewarp083-timewarp',
+      tracks: [1704276706, 3830354528, 261501608, 2568555118, 4020795603, 1498499009, 4036666809, 974781872, 3103678043],
+      trackNames: [
+        'Aliens Interference',
+        'Normal Light Motion',
+        'Tempering Sound Waves',
+        'UFO Contact',
+        'Magic Frequency',
+        'The Forgotten Message',
+        'Out Of Perspective',
+        'Dream State',
+        'Moments of Magic',
+      ],
+    },
+    {
+      id: 4198611513,
+      artist: 'Stoner Kebab',
+      name: 'SIMON',
+      url: 'https://stonerkebab.bandcamp.com/album/simon-2013',
+      tracks: [4226892860, 1796888590],
+      trackNames: ['St. Lucy', 'The Monster'],
+    },
   ];
 
   const allTracks = albums.flatMap(function (album) {
@@ -149,10 +192,13 @@
   }
 
   function loadTrack(entry) {
-    iframe.src =
-      'https://bandcamp.com/EmbeddedPlayer/album=' + entry.albumId +
-      '/size=small/bgcol=0d1f0d/linkcol=7cb87c/track=' + entry.trackId +
+    var src = 'https://bandcamp.com/EmbeddedPlayer/';
+    if (entry.albumId) {
+      src += 'album=' + entry.albumId + '/';
+    }
+    src += 'size=small/bgcol=0d1f0d/linkcol=7cb87c/track=' + entry.trackId +
       '/transparent=false/autoplay=true/';
+    iframe.src = src;
     if (trackLabel) {
       trackLabel.textContent = entry.artist + ' \u2014 ' + entry.name;
       trackLabel.href = entry.albumUrl;
