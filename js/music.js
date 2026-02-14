@@ -215,7 +215,7 @@
       src += 'album=' + entry.albumId + '/';
     }
     src += 'size=small/bgcol=0d1f0d/linkcol=7cb87c/track=' + entry.trackId +
-      '/transparent=false/autoplay=true/';
+      '/transparent=true/autoplay=true/';
     iframe.src = src;
     if (trackLabel) {
       trackLabel.textContent = entry.artist + ' \u2014 ' + entry.name;
