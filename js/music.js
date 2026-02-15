@@ -219,6 +219,14 @@
       tracks: [4226892860, 1796888590],
       trackNames: ['St. Lucy', 'The Monster'],
     },
+    {
+      id: null,
+      artist: 'Stoner Kebab',
+      name: 'Superdoom',
+      url: 'https://stonerkebab.bandcamp.com/track/7-superdoom',
+      tracks: [2306603443],
+      trackNames: ['Superdoom'],
+    },
   ];
 
   const allTracks = albums.flatMap(function (album) {
