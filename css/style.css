@@ -599,6 +599,25 @@ footer {
     .player-track-name {
         display: none;
     }
+
+    .site-player {
+        flex-wrap: nowrap;
+    }
+
+    .site-player iframe {
+        width: 0;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .player-btn {
+        width: 40px;
+        order: -1;
+    }
+
+    .eq-bars {
+        display: none;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
