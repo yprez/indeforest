@@ -325,4 +325,41 @@
   if (nextBtn) nextBtn.addEventListener('click', goNext);
 
   goNext();
+
+  // Music catalog
+  var catalog = document.getElementById('music-catalog');
+  if (catalog) {
+    var shuffledCatalog = shuffle(allTracks.map(function (t, i) {
+      return { track: t, index: i };
+    }));
+
+    shuffledCatalog.forEach(function (item) {
+      var card = document.createElement('div');
+      card.className = 'music-card';
+      card.setAttribute('data-track-index', item.index);
+
+      card.innerHTML =
+        '<span class="music-card-artist">' + item.track.artist + '</span>' +
+        '<span class="music-card-name">' + item.track.name + '</span>';
+
+      catalog.appendChild(card);
+    });
+
+    catalog.addEventListener('click', function (e) {
+      var card = e.target.closest('.music-card');
+      if (!card) return;
+      var idx = Number(card.getAttribute('data-track-index'));
+      var track = allTracks[idx];
+      if (!track) return;
+
+      history.push(track);
+      pos = history.length - 1;
+      loadTrack(track);
+      updateButtons();
+
+      var prev = catalog.querySelector('.music-card.is-playing');
+      if (prev) prev.classList.remove('is-playing');
+      card.classList.add('is-playing');
+    });
+  }
 })();

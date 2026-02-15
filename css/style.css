@@ -382,6 +382,58 @@ section {
     color: var(--color-text-muted);
 }
 
+/* --- Music catalog --- */
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.music-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: var(--spacing-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.music-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(124, 184, 124, 0.1);
+}
+
+.music-card.is-playing {
+    border-color: var(--color-accent);
+    background: var(--color-surface-alt);
+}
+
+.music-card-artist {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.music-card-name {
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.soundcloud-embed {
+    margin-top: var(--spacing-md);
+}
+
+.soundcloud-embed iframe {
+    border: none;
+    border-radius: 8px;
+}
+
 /* --- Player bar --- */
 
 .site-player {
@@ -513,7 +565,8 @@ footer {
     }
 
     .events-grid,
-    .shop-grid {
+    .shop-grid,
+    .music-grid {
         grid-template-columns: 1fr;
         max-width: 320px;
         margin: 0 auto;
