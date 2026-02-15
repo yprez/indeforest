@@ -564,7 +564,31 @@ footer {
         letter-spacing: 0.2em;
     }
 
-    .events-grid,
+    .events-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: none;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: var(--spacing-sm);
+        cursor: grab;
+        user-select: none;
+    }
+
+    .events-grid img {
+        pointer-events: none;
+    }
+
+    .events-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .event-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+        aspect-ratio: 2/3;
+    }
+
     .shop-grid,
     .music-grid {
         grid-template-columns: 1fr;

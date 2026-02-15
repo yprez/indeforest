@@ -40,4 +40,34 @@
   if (initial && document.getElementById(initial)) {
     showView(initial);
   }
+
+  // Mouse drag scrolling for carousels
+  document.querySelectorAll('.events-grid').forEach(function (el) {
+    var isDown = false;
+    var startX, scrollLeft;
+
+    el.addEventListener('mousedown', function (e) {
+      isDown = true;
+      el.style.cursor = 'grabbing';
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+    });
+
+    el.addEventListener('mouseleave', function () {
+      isDown = false;
+      el.style.cursor = '';
+    });
+
+    el.addEventListener('mouseup', function () {
+      isDown = false;
+      el.style.cursor = '';
+    });
+
+    el.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - el.offsetLeft;
+      el.scrollLeft = scrollLeft - (x - startX);
+    });
+  });
 })();
