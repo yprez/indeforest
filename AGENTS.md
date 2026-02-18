@@ -1,6 +1,6 @@
 # Indeforest
 
-Community platform for forest-inspired music events and barter marketplace, based in Jerusalem. Static single-page app with a Bandcamp shuffle player, event posters, and a barter shop.
+Community platform for forest-inspired music events and barter marketplace, based in Jerusalem. Static single-page app with a Bandcamp shuffle player, event posters, and an art/barter section.
 
 > **Note:** `CLAUDE.md` is a symlink to this file (`AGENTS.md`). Edit `AGENTS.md` directly.
 
@@ -24,7 +24,7 @@ Single-page app with hash-based view switching. Music plays continuously across 
 
 ```
 indeforest/
-├── index.html          # All views (events, shop) + player bar
+├── index.html          # All views (events, art) + player bar
 ├── css/style.css       # All styles, CSS custom properties
 ├── js/
 │   ├── music.js        # Bandcamp player, track catalog, EQ bars
@@ -44,7 +44,7 @@ Two views toggled by `data-nav` attributes and `hidden` property. Default: event
 | View | Content |
 |------|---------|
 | `#events` | Past event posters (grid), future events placeholder |
-| `#shop` | Barter items with WhatsApp links |
+| `#art` | Barter items with WhatsApp links |
 
 ### Music player
 
@@ -77,7 +77,7 @@ No build step. No tests. Manual browser testing only.
 
 The static site is the MVP. Next phases:
 
-1. Fill in real shop items, add item photos, connect WhatsApp number to barter links
+1. Fill in real art items, add item photos, connect WhatsApp number to barter links
 2. When user accounts are needed, migrate to Django
 3. Barter system: users create pages and offer items/services in exchange
 4. New sections: art gallery, lessons
